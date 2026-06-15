@@ -1,0 +1,757 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>SKY Ranking – Digital Marketing Agency</title>
+  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet"/>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --sky-deep:   #0A1628;
+      --sky-mid:    #0D3B6E;
+      --sky-bright: #1A7FD4;
+      --sky-light:  #4FB8FF;
+      --gold:       #F5A623;
+      --white:      #FFFFFF;
+      --off-white:  #F0F6FF;
+      --text-muted: #8BA3C0;
+      --card-bg:    #0E2040;
+      --border:     rgba(74,144,226,0.18);
+      --radius:     14px;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      background: var(--sky-deep);
+      color: var(--white);
+      overflow-x: hidden;
+    }
+
+    /* ── NAV ── */
+    nav {
+      position: fixed; top: 0; left: 0; width: 100%; z-index: 100;
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 0 5%; height: 70px;
+      background: rgba(10,22,40,0.92);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--border);
+    }
+    .logo {
+      font-family: 'Syne', sans-serif;
+      font-size: 1.5rem; font-weight: 800;
+      letter-spacing: -0.5px;
+    }
+    .logo span { color: var(--sky-light); }
+    .logo em { color: var(--gold); font-style: normal; }
+
+    nav ul { list-style: none; display: flex; gap: 2rem; }
+    nav ul a {
+      color: var(--text-muted);
+      text-decoration: none; font-size: .9rem; font-weight: 500;
+      transition: color .2s;
+    }
+    nav ul a:hover { color: var(--white); }
+
+    .nav-cta {
+      background: var(--sky-bright);
+      color: var(--white) !important;
+      padding: .45rem 1.2rem;
+      border-radius: 30px;
+      font-weight: 600 !important;
+    }
+    .nav-cta:hover { background: var(--sky-light); color: var(--sky-deep) !important; }
+
+    /* ── HERO ── */
+    #home {
+      min-height: 100vh;
+      display: flex; align-items: center;
+      padding: 120px 5% 80px;
+      position: relative; overflow: hidden;
+    }
+    .hero-bg {
+      position: absolute; inset: 0; z-index: 0;
+      background:
+        radial-gradient(ellipse 70% 60% at 70% 40%, rgba(26,127,212,0.22) 0%, transparent 70%),
+        radial-gradient(ellipse 40% 40% at 20% 80%, rgba(79,184,255,0.10) 0%, transparent 60%);
+    }
+    .hero-grid {
+      position: absolute; inset: 0; z-index: 0;
+      background-image:
+        linear-gradient(rgba(26,127,212,0.05) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(26,127,212,0.05) 1px, transparent 1px);
+      background-size: 60px 60px;
+    }
+    .hero-content { position: relative; z-index: 1; max-width: 650px; }
+
+    .hero-badge {
+      display: inline-flex; align-items: center; gap: .5rem;
+      background: rgba(26,127,212,0.15);
+      border: 1px solid rgba(79,184,255,0.3);
+      border-radius: 30px; padding: .4rem 1rem;
+      font-size: .8rem; font-weight: 500; color: var(--sky-light);
+      margin-bottom: 1.5rem;
+    }
+    .hero-badge::before { content: "★"; color: var(--gold); }
+
+    h1 {
+      font-family: 'Syne', sans-serif;
+      font-size: clamp(2.6rem, 5.5vw, 4.2rem);
+      font-weight: 800; line-height: 1.1;
+      letter-spacing: -1.5px;
+      margin-bottom: 1.3rem;
+    }
+    h1 .highlight {
+      background: linear-gradient(90deg, var(--sky-light), var(--gold));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    .hero-desc {
+      font-size: 1.08rem; color: var(--text-muted);
+      line-height: 1.7; max-width: 520px;
+      margin-bottom: 2rem;
+    }
+
+    .btn-group { display: flex; gap: 1rem; flex-wrap: wrap; }
+    .btn-primary {
+      background: linear-gradient(135deg, var(--sky-bright), var(--sky-light));
+      color: var(--sky-deep);
+      font-weight: 700; font-size: .95rem;
+      padding: .85rem 2rem; border-radius: 40px;
+      text-decoration: none; transition: transform .2s, box-shadow .2s;
+      box-shadow: 0 8px 30px rgba(26,127,212,0.4);
+    }
+    .btn-primary:hover { transform: translateY(-2px); box-shadow: 0 12px 40px rgba(26,127,212,0.55); }
+    .btn-secondary {
+      background: transparent;
+      border: 1.5px solid var(--sky-bright);
+      color: var(--sky-light);
+      font-weight: 600; font-size: .95rem;
+      padding: .85rem 2rem; border-radius: 40px;
+      text-decoration: none; transition: background .2s, color .2s;
+    }
+    .btn-secondary:hover { background: var(--sky-bright); color: var(--white); }
+
+    .hero-stats {
+      display: flex; gap: 2.5rem; margin-top: 3rem;
+      flex-wrap: wrap;
+    }
+    .stat-item { text-align: center; }
+    .stat-num {
+      font-family: 'Syne', sans-serif;
+      font-size: 2rem; font-weight: 800;
+      color: var(--sky-light);
+    }
+    .stat-num span { color: var(--gold); }
+    .stat-label { font-size: .78rem; color: var(--text-muted); margin-top: .2rem; text-transform: uppercase; letter-spacing: 1px; }
+
+    /* floating rocket */
+    .hero-rocket {
+      position: absolute; right: 6%; top: 50%;
+      transform: translateY(-50%);
+      font-size: clamp(7rem, 14vw, 13rem);
+      animation: float 4s ease-in-out infinite;
+      z-index: 1; user-select: none;
+      filter: drop-shadow(0 0 40px rgba(79,184,255,0.3));
+    }
+    @keyframes float {
+      0%,100% { transform: translateY(-50%) rotate(-5deg); }
+      50%      { transform: translateY(calc(-50% - 18px)) rotate(5deg); }
+    }
+
+    /* ── SECTIONS ── */
+    section { padding: 90px 5%; }
+    .section-label {
+      font-size: .78rem; font-weight: 600; letter-spacing: 2.5px;
+      text-transform: uppercase; color: var(--sky-light);
+      margin-bottom: .7rem;
+    }
+    .section-title {
+      font-family: 'Syne', sans-serif;
+      font-size: clamp(1.8rem, 3.5vw, 2.6rem);
+      font-weight: 800; letter-spacing: -0.5px;
+      margin-bottom: 1rem;
+    }
+    .section-desc {
+      color: var(--text-muted); font-size: 1rem;
+      line-height: 1.7; max-width: 560px;
+      margin-bottom: 3rem;
+    }
+
+    /* ── SERVICES ── */
+    #services { background: rgba(13,59,110,0.12); }
+    .services-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(270px, 1fr));
+      gap: 1.5rem;
+    }
+    .service-card {
+      background: var(--card-bg);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 2rem;
+      transition: transform .25s, border-color .25s, box-shadow .25s;
+      position: relative; overflow: hidden;
+    }
+    .service-card::before {
+      content: '';
+      position: absolute; top: 0; left: 0; right: 0; height: 3px;
+      background: linear-gradient(90deg, var(--sky-bright), var(--sky-light));
+      opacity: 0; transition: opacity .25s;
+    }
+    .service-card:hover { transform: translateY(-5px); border-color: var(--sky-bright); box-shadow: 0 16px 40px rgba(26,127,212,0.2); }
+    .service-card:hover::before { opacity: 1; }
+    .service-icon { font-size: 2.2rem; margin-bottom: 1rem; }
+    .service-card h3 {
+      font-family: 'Syne', sans-serif;
+      font-size: 1.1rem; font-weight: 700; margin-bottom: .6rem;
+    }
+    .service-card p { font-size: .88rem; color: var(--text-muted); line-height: 1.6; }
+    .service-tag {
+      display: inline-block; margin-top: 1rem;
+      font-size: .72rem; font-weight: 600; color: var(--sky-light);
+      background: rgba(26,127,212,0.15); border-radius: 20px;
+      padding: .25rem .8rem;
+    }
+
+    /* ── WHY US ── */
+    #about { background: var(--sky-deep); }
+    .about-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; align-items: center; }
+    .about-visual {
+      background: var(--card-bg);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 2.5rem; text-align: center;
+    }
+    .big-number {
+      font-family: 'Syne', sans-serif;
+      font-size: 5rem; font-weight: 800;
+      background: linear-gradient(135deg, var(--sky-light), var(--gold));
+      -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
+      line-height: 1;
+    }
+    .about-checks { list-style: none; display: flex; flex-direction: column; gap: .9rem; margin-top: 2rem; }
+    .about-checks li {
+      display: flex; align-items: flex-start; gap: .8rem;
+      font-size: .92rem; color: var(--text-muted); line-height: 1.5;
+    }
+    .about-checks li::before { content: "✦"; color: var(--sky-light); font-size: .8rem; flex-shrink: 0; margin-top: .15rem; }
+
+    /* ── PROCESS ── */
+    #process { background: rgba(13,59,110,0.12); }
+    .process-steps { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1.5rem; position: relative; }
+    .process-step {
+      background: var(--card-bg);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 2rem 1.5rem;
+      text-align: center;
+    }
+    .step-num {
+      width: 48px; height: 48px; border-radius: 50%;
+      background: linear-gradient(135deg, var(--sky-bright), var(--sky-light));
+      color: var(--sky-deep); font-family: 'Syne', sans-serif;
+      font-size: 1.1rem; font-weight: 800;
+      display: flex; align-items: center; justify-content: center;
+      margin: 0 auto 1rem;
+    }
+    .process-step h3 { font-family: 'Syne', sans-serif; font-size: 1rem; font-weight: 700; margin-bottom: .5rem; }
+    .process-step p { font-size: .83rem; color: var(--text-muted); line-height: 1.6; }
+
+    /* ── TESTIMONIALS ── */
+    #testimonials { background: var(--sky-deep); }
+    .testi-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1.5rem; }
+    .testi-card {
+      background: var(--card-bg);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 2rem; position: relative;
+    }
+    .testi-card::before { content: '"'; font-size: 5rem; color: var(--sky-bright); opacity: .2; position: absolute; top: .5rem; right: 1.5rem; font-family: serif; line-height: 1; }
+    .stars { color: var(--gold); font-size: 1rem; margin-bottom: 1rem; }
+    .testi-text { font-size: .9rem; color: var(--text-muted); line-height: 1.7; margin-bottom: 1.5rem; }
+    .testi-author { display: flex; align-items: center; gap: .75rem; }
+    .author-avatar {
+      width: 44px; height: 44px; border-radius: 50%;
+      background: linear-gradient(135deg, var(--sky-bright), var(--sky-light));
+      display: flex; align-items: center; justify-content: center;
+      font-weight: 700; font-family: 'Syne', sans-serif; color: var(--sky-deep);
+      font-size: 1.1rem;
+    }
+    .author-name { font-weight: 600; font-size: .9rem; }
+    .author-role { font-size: .78rem; color: var(--text-muted); }
+
+    /* ── CONTACT ── */
+    #contact { background: rgba(13,59,110,0.12); }
+    .contact-wrapper { display: grid; grid-template-columns: 1fr 1.3fr; gap: 4rem; align-items: start; }
+    .contact-info { display: flex; flex-direction: column; gap: 1.5rem; }
+    .contact-item { display: flex; align-items: flex-start; gap: 1rem; }
+    .contact-icon {
+      width: 44px; height: 44px; border-radius: 10px;
+      background: rgba(26,127,212,0.15); border: 1px solid var(--border);
+      display: flex; align-items: center; justify-content: center;
+      font-size: 1.2rem; flex-shrink: 0;
+    }
+    .contact-item h4 { font-size: .85rem; color: var(--text-muted); margin-bottom: .2rem; }
+    .contact-item p { font-size: .95rem; font-weight: 500; }
+
+    form { display: flex; flex-direction: column; gap: 1.1rem; }
+    .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
+    label { font-size: .8rem; color: var(--text-muted); margin-bottom: .3rem; display: block; }
+    input, select, textarea {
+      width: 100%;
+      background: var(--card-bg);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      color: var(--white);
+      font-family: 'Inter', sans-serif;
+      font-size: .9rem;
+      padding: .8rem 1rem;
+      outline: none; transition: border-color .2s;
+    }
+    input:focus, select:focus, textarea:focus { border-color: var(--sky-bright); }
+    select option { background: var(--card-bg); }
+    textarea { resize: vertical; min-height: 130px; }
+    .btn-submit {
+      background: linear-gradient(135deg, var(--sky-bright), var(--sky-light));
+      color: var(--sky-deep);
+      font-weight: 700; font-size: .95rem;
+      padding: 1rem; border-radius: 40px;
+      border: none; cursor: pointer;
+      transition: transform .2s, box-shadow .2s;
+      box-shadow: 0 8px 24px rgba(26,127,212,0.3);
+    }
+    .btn-submit:hover { transform: translateY(-2px); box-shadow: 0 12px 36px rgba(26,127,212,0.5); }
+
+    /* ── FOOTER ── */
+    footer {
+      background: var(--sky-deep);
+      border-top: 1px solid var(--border);
+      padding: 3rem 5% 2rem;
+    }
+    .footer-grid { display: grid; grid-template-columns: 1.5fr 1fr 1fr 1fr; gap: 2.5rem; margin-bottom: 3rem; }
+    .footer-brand p { font-size: .88rem; color: var(--text-muted); margin-top: .75rem; line-height: 1.6; max-width: 250px; }
+    .footer-col h4 {
+      font-family: 'Syne', sans-serif;
+      font-size: .9rem; font-weight: 700;
+      margin-bottom: 1rem; color: var(--white);
+    }
+    .footer-col ul { list-style: none; display: flex; flex-direction: column; gap: .55rem; }
+    .footer-col ul li a { color: var(--text-muted); text-decoration: none; font-size: .85rem; transition: color .2s; }
+    .footer-col ul li a:hover { color: var(--sky-light); }
+
+    .footer-bottom {
+      display: flex; justify-content: space-between; align-items: center;
+      padding-top: 2rem; border-top: 1px solid var(--border);
+      font-size: .8rem; color: var(--text-muted); flex-wrap: wrap; gap: 1rem;
+    }
+    .social-links { display: flex; gap: .75rem; }
+    .social-links a {
+      width: 36px; height: 36px; border-radius: 50%;
+      background: var(--card-bg); border: 1px solid var(--border);
+      display: flex; align-items: center; justify-content: center;
+      text-decoration: none; font-size: .9rem;
+      transition: background .2s, border-color .2s;
+    }
+    .social-links a:hover { background: var(--sky-bright); border-color: var(--sky-bright); }
+
+    /* whatsapp */
+    .whatsapp-btn {
+      position: fixed; bottom: 28px; right: 28px; z-index: 200;
+      width: 56px; height: 56px; border-radius: 50%;
+      background: #25D366;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 1.6rem; text-decoration: none;
+      box-shadow: 0 6px 24px rgba(37,211,102,0.5);
+      transition: transform .2s, box-shadow .2s;
+    }
+    .whatsapp-btn:hover { transform: scale(1.1); box-shadow: 0 10px 30px rgba(37,211,102,0.65); }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 900px) {
+      nav ul { display: none; }
+      .about-grid { grid-template-columns: 1fr; }
+      .contact-wrapper { grid-template-columns: 1fr; }
+      .footer-grid { grid-template-columns: 1fr 1fr; }
+      .hero-rocket { opacity: .2; right: 2%; }
+    }
+    @media (max-width: 600px) {
+      .form-row { grid-template-columns: 1fr; }
+      .footer-grid { grid-template-columns: 1fr; }
+      .hero-stats { gap: 1.5rem; }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      .hero-rocket { animation: none; }
+      * { transition: none !important; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <div class="logo"><span>SKY</span> <em>Ranking</em></div>
+  <ul>
+    <li><a href="#home">Home</a></li>
+    <li><a href="#services">Services</a></li>
+    <li><a href="#about">About</a></li>
+    <li><a href="#process">Process</a></li>
+    <li><a href="#testimonials">Reviews</a></li>
+    <li><a href="#contact" class="nav-cta">Get Started</a></li>
+  </ul>
+</nav>
+
+<!-- HERO -->
+<section id="home">
+  <div class="hero-bg"></div>
+  <div class="hero-grid"></div>
+  <div class="hero-content">
+    <div class="hero-badge">India's Trusted Digital Marketing Partner</div>
+    <h1>Take Your Brand<br><span class="highlight">to the SKY</span></h1>
+    <p class="hero-desc">We craft data-driven SEO, social media, and paid ad strategies that put your business in front of the right people — and keep it there.</p>
+    <div class="btn-group">
+      <a href="#contact" class="btn-primary">🚀 Get Free Consultation</a>
+      <a href="#services" class="btn-secondary">Explore Services</a>
+    </div>
+    <div class="hero-stats">
+      <div class="stat-item">
+        <div class="stat-num">200<span>+</span></div>
+        <div class="stat-label">Clients Served</div>
+      </div>
+      <div class="stat-item">
+        <div class="stat-num">5<span>×</span></div>
+        <div class="stat-label">Avg ROI Growth</div>
+      </div>
+      <div class="stat-item">
+        <div class="stat-num">98<span>%</span></div>
+        <div class="stat-label">Client Satisfaction</div>
+      </div>
+      <div class="stat-item">
+        <div class="stat-num">6<span>+</span></div>
+        <div class="stat-label">Years Experience</div>
+      </div>
+    </div>
+  </div>
+  <div class="hero-rocket" aria-hidden="true">🚀</div>
+</section>
+
+<!-- SERVICES -->
+<section id="services">
+  <div class="section-label">What We Do</div>
+  <h2 class="section-title">Services Built to <span style="color:var(--sky-light)">Rank & Convert</span></h2>
+  <p class="section-desc">Every service we offer is designed with one goal — measurable growth for your business.</p>
+  <div class="services-grid">
+    <div class="service-card">
+      <div class="service-icon">🔍</div>
+      <h3>Search Engine Optimization</h3>
+      <p>Dominate Google rankings with technical SEO, on-page optimization, link building, and keyword strategy tailored to your niche.</p>
+      <span class="service-tag">Organic Growth</span>
+    </div>
+    <div class="service-card">
+      <div class="service-icon">📣</div>
+      <h3>Google Ads / PPC</h3>
+      <p>Drive instant targeted traffic with smart pay-per-click campaigns. We optimize every rupee of your ad budget for maximum ROI.</p>
+      <span class="service-tag">Paid Traffic</span>
+    </div>
+    <div class="service-card">
+      <div class="service-icon">📱</div>
+      <h3>Social Media Marketing</h3>
+      <p>Build a loyal community on Instagram, Facebook, and LinkedIn with engaging content strategies and consistent brand presence.</p>
+      <span class="service-tag">Brand Awareness</span>
+    </div>
+    <div class="service-card">
+      <div class="service-icon">📍</div>
+      <h3>Local SEO</h3>
+      <p>Get found by nearby customers through Google Business Profile optimization, local citations, and map pack domination.</p>
+      <span class="service-tag">Local Visibility</span>
+    </div>
+    <div class="service-card">
+      <div class="service-icon">✍️</div>
+      <h3>Content Marketing</h3>
+      <p>Attract, engage, and convert with blogs, videos, and copy that rank on Google and resonate with your ideal customers.</p>
+      <span class="service-tag">Authority Building</span>
+    </div>
+    <div class="service-card">
+      <div class="service-icon">📊</div>
+      <h3>Website Audit & Analytics</h3>
+      <p>Know exactly what's holding your site back. Our deep audits uncover technical errors, UX gaps, and missed ranking opportunities.</p>
+      <span class="service-tag">Data & Insights</span>
+    </div>
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section id="about">
+  <div class="about-grid">
+    <div>
+      <div class="section-label">Why SKY Ranking</div>
+      <h2 class="section-title">Results You Can<br><span style="color:var(--sky-light)">Actually See</span></h2>
+      <p class="section-desc">We don't just run campaigns — we own outcomes. Every strategy is backed by data, every decision tested for performance.</p>
+      <ul class="about-checks">
+        <li>Dedicated account manager for every client</li>
+        <li>Monthly transparent performance reports with real numbers</li>
+        <li>No lock-in contracts — we earn your business every month</li>
+        <li>ROI-focused strategies, not vanity metrics</li>
+        <li>Experienced team across SEO, Ads, Content & Social</li>
+        <li>Free website & SEO audit before you commit</li>
+      </ul>
+    </div>
+    <div class="about-visual">
+      <div class="big-number">200+</div>
+      <p style="color:var(--text-muted);margin-top:.5rem;font-size:.9rem;">Happy Clients Across India</p>
+      <div style="margin-top:2rem;display:grid;grid-template-columns:1fr 1fr;gap:1.2rem;">
+        <div style="background:rgba(26,127,212,0.1);border:1px solid var(--border);border-radius:10px;padding:1.2rem;">
+          <div style="font-family:'Syne',sans-serif;font-size:1.8rem;font-weight:800;color:var(--gold)">5×</div>
+          <div style="font-size:.8rem;color:var(--text-muted);margin-top:.2rem">Average ROI</div>
+        </div>
+        <div style="background:rgba(26,127,212,0.1);border:1px solid var(--border);border-radius:10px;padding:1.2rem;">
+          <div style="font-family:'Syne',sans-serif;font-size:1.8rem;font-weight:800;color:var(--sky-light)">98%</div>
+          <div style="font-size:.8rem;color:var(--text-muted);margin-top:.2rem">Retention Rate</div>
+        </div>
+        <div style="background:rgba(26,127,212,0.1);border:1px solid var(--border);border-radius:10px;padding:1.2rem;">
+          <div style="font-family:'Syne',sans-serif;font-size:1.8rem;font-weight:800;color:var(--sky-light)">6+</div>
+          <div style="font-size:.8rem;color:var(--text-muted);margin-top:.2rem">Years Active</div>
+        </div>
+        <div style="background:rgba(26,127,212,0.1);border:1px solid var(--border);border-radius:10px;padding:1.2rem;">
+          <div style="font-family:'Syne',sans-serif;font-size:1.8rem;font-weight:800;color:var(--gold)">500+</div>
+          <div style="font-size:.8rem;color:var(--text-muted);margin-top:.2rem">Projects Done</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PROCESS -->
+<section id="process">
+  <div class="section-label">How We Work</div>
+  <h2 class="section-title">Simple Process, <span style="color:var(--sky-light)">Big Results</span></h2>
+  <p class="section-desc">From discovery to domination — here's how we take your brand from invisible to unstoppable.</p>
+  <div class="process-steps">
+    <div class="process-step">
+      <div class="step-num">1</div>
+      <h3>Free Audit</h3>
+      <p>We analyze your website, competitors, and current digital presence to spot every opportunity.</p>
+    </div>
+    <div class="process-step">
+      <div class="step-num">2</div>
+      <h3>Strategy Call</h3>
+      <p>A focused session to define your goals, target audience, and the best channels to reach them.</p>
+    </div>
+    <div class="process-step">
+      <div class="step-num">3</div>
+      <h3>Custom Plan</h3>
+      <p>We build a tailored roadmap with clear milestones — no generic packages, no guesswork.</p>
+    </div>
+    <div class="process-step">
+      <div class="step-num">4</div>
+      <h3>Execute & Optimize</h3>
+      <p>Campaigns launch, data flows in, and we optimize continuously to maximize every result.</p>
+    </div>
+    <div class="process-step">
+      <div class="step-num">5</div>
+      <h3>Report & Grow</h3>
+      <p>Monthly reports with real metrics — traffic, leads, revenue — and a plan to scale further.</p>
+    </div>
+  </div>
+</section>
+
+<!-- TESTIMONIALS -->
+<section id="testimonials">
+  <div class="section-label">Client Stories</div>
+  <h2 class="section-title">What Our <span style="color:var(--sky-light)">Clients Say</span></h2>
+  <p class="section-desc">Real results, real words. Here's what businesses say after working with SKY Ranking.</p>
+  <div class="testi-grid">
+    <div class="testi-card">
+      <div class="stars">★★★★★</div>
+      <p class="testi-text">SKY Ranking took our local bakery from page 4 to the top 3 on Google Maps within just 2 months. Orders have doubled and our phone doesn't stop ringing!</p>
+      <div class="testi-author">
+        <div class="author-avatar">R</div>
+        <div>
+          <div class="author-name">Ravi Patel</div>
+          <div class="author-role">Owner, Patel Bakery – Surat</div>
+        </div>
+      </div>
+    </div>
+    <div class="testi-card">
+      <div class="stars">★★★★★</div>
+      <p class="testi-text">Our Google Ads campaigns were bleeding money before SKY Ranking stepped in. They restructured everything and our cost per lead dropped by 60%. Incredible work!</p>
+      <div class="testi-author">
+        <div class="author-avatar">P</div>
+        <div>
+          <div class="author-name">Priya Mehta</div>
+          <div class="author-role">Co-Founder, EduStart – Ahmedabad</div>
+        </div>
+      </div>
+    </div>
+    <div class="testi-card">
+      <div class="stars">★★★★★</div>
+      <p class="testi-text">The SEO results are outstanding. We went from 200 monthly visitors to over 8,000 in 4 months. The team is responsive, transparent, and genuinely cares about results.</p>
+      <div class="testi-author">
+        <div class="author-avatar">A</div>
+        <div>
+          <div class="author-name">Ankit Shah</div>
+          <div class="author-role">Director, FitLife Supplements – Mumbai</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact">
+  <div class="section-label">Get In Touch</div>
+  <h2 class="section-title">Ready to <span style="color:var(--sky-light)">Rank Higher?</span></h2>
+  <p class="section-desc">Book your free consultation today. No commitment, no pressure — just clarity on how we can grow your business.</p>
+  <div class="contact-wrapper">
+    <div class="contact-info">
+      <div class="contact-item">
+        <div class="contact-icon">📧</div>
+        <div>
+          <h4>Email Us</h4>
+          <p>hello@skyranking.in</p>
+        </div>
+      </div>
+      <div class="contact-item">
+        <div class="contact-icon">📞</div>
+        <div>
+          <h4>Call / WhatsApp</h4>
+          <p>+91 98765 43210</p>
+        </div>
+      </div>
+      <div class="contact-item">
+        <div class="contact-icon">📍</div>
+        <div>
+          <h4>Location</h4>
+          <p>Surat, Gujarat, India</p>
+        </div>
+      </div>
+      <div class="contact-item">
+        <div class="contact-icon">⏰</div>
+        <div>
+          <h4>Working Hours</h4>
+          <p>Mon – Sat, 9 AM – 7 PM IST</p>
+        </div>
+      </div>
+    </div>
+    <form onsubmit="handleSubmit(event)">
+      <div class="form-row">
+        <div>
+          <label>Your Name</label>
+          <input type="text" placeholder="Ravi Patel" required/>
+        </div>
+        <div>
+          <label>Phone / WhatsApp</label>
+          <input type="tel" placeholder="+91 98765 43210"/>
+        </div>
+      </div>
+      <div>
+        <label>Email Address</label>
+        <input type="email" placeholder="you@business.com" required/>
+      </div>
+      <div>
+        <label>Service Interested In</label>
+        <select>
+          <option value="">Select a service...</option>
+          <option>SEO – Search Engine Optimization</option>
+          <option>Google Ads / PPC</option>
+          <option>Social Media Marketing</option>
+          <option>Local SEO</option>
+          <option>Content Marketing</option>
+          <option>Website Audit</option>
+          <option>Full Digital Marketing Package</option>
+        </select>
+      </div>
+      <div>
+        <label>Tell us about your business</label>
+        <textarea placeholder="Briefly describe your business, current challenges, and what you want to achieve..."></textarea>
+      </div>
+      <button type="submit" class="btn-submit">🚀 Send My Free Consultation Request</button>
+    </form>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-grid">
+    <div class="footer-brand">
+      <div class="logo"><span>SKY</span> <em>Ranking</em></div>
+      <p>India's trusted digital marketing partner helping businesses rank higher, grow faster, and convert better.</p>
+    </div>
+    <div class="footer-col">
+      <h4>Services</h4>
+      <ul>
+        <li><a href="#services">SEO</a></li>
+        <li><a href="#services">Google Ads</a></li>
+        <li><a href="#services">Social Media</a></li>
+        <li><a href="#services">Local SEO</a></li>
+        <li><a href="#services">Content Marketing</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h4>Company</h4>
+      <ul>
+        <li><a href="#about">About Us</a></li>
+        <li><a href="#process">Our Process</a></li>
+        <li><a href="#testimonials">Reviews</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h4>Contact</h4>
+      <ul>
+        <li><a href="mailto:hello@skyranking.in">hello@skyranking.in</a></li>
+        <li><a href="tel:+919876543210">+91 98765 43210</a></li>
+        <li><a href="#">Surat, Gujarat, India</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <span>© 2025 SKY Ranking. All rights reserved.</span>
+    <div class="social-links">
+      <a href="#" title="Instagram">📸</a>
+      <a href="#" title="Facebook">📘</a>
+      <a href="#" title="LinkedIn">💼</a>
+      <a href="#" title="YouTube">▶️</a>
+    </div>
+  </div>
+</footer>
+
+<!-- WhatsApp Float Button -->
+<a href="https://wa.me/919876543210" class="whatsapp-btn" target="_blank" title="Chat on WhatsApp">💬</a>
+
+<script>
+  function handleSubmit(e) {
+    e.preventDefault();
+    const btn = e.target.querySelector('.btn-submit');
+    btn.textContent = '✅ Request Sent! We'll contact you within 24 hrs.';
+    btn.style.background = 'linear-gradient(135deg,#22c55e,#16a34a)';
+    btn.disabled = true;
+    setTimeout(() => {
+      btn.textContent = '🚀 Send My Free Consultation Request';
+      btn.style.background = '';
+      btn.disabled = false;
+      e.target.reset();
+    }, 5000);
+  }
+
+  // Smooth active nav highlight
+  const sections = document.querySelectorAll('section[id]');
+  const navLinks = document.querySelectorAll('nav ul a');
+  window.addEventListener('scroll', () => {
+    let current = '';
+    sections.forEach(sec => {
+      if (window.scrollY >= sec.offsetTop - 100) current = sec.id;
+    });
+    navLinks.forEach(a => {
+      a.style.color = a.getAttribute('href') === '#' + current ? 'var(--white)' : '';
+    });
+  });
+</script>
+</body>
+</html>
